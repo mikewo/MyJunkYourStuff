@@ -1,0 +1,38 @@
+﻿@model IEnumerable<MyJunkYourStuff.Models.Location>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>My Junk Your Stuff</h1>
+    <p class="lead">The Law of Conservation of Mass states that mass can neither be created nor destroyed, although it can be rearranged in space.</p>
+    <p>This site is dedicated to moving the mass of your junk to other people in the form of garage sales, or helping others reduce the mass in their lives
+    by rearranging it to yours.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Upcoming Sales</h2>
+        <p>
+            The upcoming options for freeing other people from thier junk and making it your stuff:
+        </p>
+        @foreach (var item in Model)
+        {
+            @String.Format("{0:MM/dd/yy}", item.StartTime) 
+            @Html.Raw("&nbsp;-&nbsp;")
+            @Html.ActionLink(item.Title, "Details", "Locations", new { id = item.Id }, null) 
+            <br />
+        }
+        <p><a class="btn btn-default" href="/Locations">More Sales &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>About</h2>
+        <p>Learn more about the MyJunkYourStuff site.</p>
+        <p><a class="btn btn-default" href="/home/about">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get the code</h2>
+        <p>The code for this sample and more examples can be found on GitHub.</p>
+        <p><a class="btn btn-default" href="https://github.com/mikewo/MyJunkYourStuff">Git the Code</a></p>
+    </div>
+</div>
