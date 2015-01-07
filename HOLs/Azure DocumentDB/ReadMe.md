@@ -48,6 +48,7 @@ This is a demonstration project. **Do not use as production quality code.** Ther
 In this section you will modify the MyJunkYourStuff project to use DocumentDB. You will add and use a new repository, *DocumentDBRepository*. You will also make a few other modifications necessary to better support DocumentDB.
 
 **Add DocumentDB client library**
+
 In order to develop against DocumentDB using the .NET SDK, you will need to include the client library.  The DocumentDB client library depends on Newtonsoft.Json for JSON serialization. NuGet will automatically configure this dependency.
 
 1. Right-click on the MyJunkYourStuff project and select **Manage NuGet packages...** Be sure to select "Include Prerelease".
@@ -55,11 +56,13 @@ In order to develop against DocumentDB using the .NET SDK, you will need to incl
 3. Select and install the **Microsoft Azure DocumentDB Client Library**. *Note: this is a Prerelease library.*
 
 *Alternative (NuGet Package Console)*
+
 ```PowerShell
 Install-Package Microsoft.Azure.Documents.Client -Version 0.9.1 -Prerelease
 ```
 
 **Add DocumentDBRepository.cs**
+
 In this section you will add the DocumentDBRepository class to your MyJunkYourStuff project. The DocumentDBRepository class is located in the repository at *HOL/Azure DocumentDB/DocumentDBRepository.cs*.
 
 Add the DocumentDBRepository.cs to the Models folder in the MyJunkYourStuff project.
@@ -67,6 +70,7 @@ Add the DocumentDBRepository.cs to the Models folder in the MyJunkYourStuff proj
 >You will need to remove the LocationInMemoryRepository class from your project. This class will not compile once changes are made to the Location class (below). Alternatively, you may change the LocationInMemoryRepository to support the new DateEpoch class (below).
 
 **Add DateEpoch class**
+
 Since DocumentDB does not handle dates like .NET does, you need to change how *DateTime* is represented. For an in-depth explanation, please see http://blogs.msdn.com/b/documentdb/archive/2014/11/18/working-with-dates-in-azure-documentdb.aspx.
 
 Add the DateEpoch and Extensions class to your project (in the Models) folder. The classes can be found below, or copied from the *HOL/Azure DocumentDB/DateEpoch.cs* file.
@@ -102,6 +106,7 @@ public static class Extensions
 ```
 
 **Modify Models/Location.cs**
+
 There are a few minor modifications you will need to make to the *Location* class. First, JSON documents typically use camelCase for properties (instead of PascalCase like .NET). The DocumentDB client library uses JSON.NET to serialize/deserialize documents. Adding the *JsonProperty* attribute to each Location property will ensure that JSON.NET serializes the properties as indicated.
 
 DocumentDB automatically includes an "id" property that is user defined. In order to use the default "id" property, be sure to add `[JsonProperty(PropertyName = "id")]` to the Location.Id property.
@@ -136,9 +141,11 @@ public class Location
 
 
 **Modify Views (Home/Index.cshtml, Locations/*)**
+
 As the *Location.StartTim*e has been change from a *DateTime* to a *DateEpoch* type, you need to make this change to ensure that both the the Date and Epoch values are not rendered. You will need to change several Views to properly display the StartTime for each Location. 
 
 *Home/Index.cshtml*
+
 Add the Date property to *item.StartTime* on line 21. The final code should resemble the snippet below.
 ```C#
 @foreach (var item in Model)
@@ -151,6 +158,7 @@ Add the Date property to *item.StartTime* on line 21. The final code should rese
 ```
 
 *Locations/Create.cshtml*
+
 Add the Date property to the *model.StartTime* edit control on line 29. The final code should resemble the snippet below.
 ```C#
 <div class="form-group">
@@ -163,6 +171,7 @@ Add the Date property to the *model.StartTime* edit control on line 29. The fina
 ```
 
 *Locations/Delete.cshtml*
+
 Add the Date property to the *model.StartTime* display control on line 27. The final code should resemble the snippet below.
 ```C#
 <dd>
@@ -171,6 +180,7 @@ Add the Date property to the *model.StartTime* display control on line 27. The f
 ```
 
 *Locations/Details.cshtml*
+
 Add the Date property to the *model.StartTime* display control on line 28. The final code should resemble the snippet below.
 ```C#
 <dd>
@@ -179,6 +189,7 @@ Add the Date property to the *model.StartTime* display control on line 28. The f
 ```
 
 *Locations/Edit.cshtml*
+
 Add the Date property to the *model.StartTime* edit control on line 32. The final code should resemble the snippet below.
 ```C#
 <div class="form-group">
@@ -191,6 +202,7 @@ Add the Date property to the *model.StartTime* edit control on line 32. The fina
 ```
 
 *Locations/Index.cshtml*
+
 Add the Date property to the *mode.StartTime* display control on line 47. The final code should resemble the snippet below.
 ```C#
 <td>
@@ -199,6 +211,7 @@ Add the Date property to the *mode.StartTime* display control on line 47. The fi
 ```
 
 **Modify NinjectWebCommon.cs**
+
 To instruct the MyJunkYourStuff project to use the new DocumentDB repository, you need to change Ninject to use *DocumentDBRepository* instead of *LocationMemoryRepository* whenever an *ILocationRepository* is requested.
 
 In the *App_Start/NinjectWebCommon.cs*, modify the *RegisterServices* method to use *DocumentDBRepository* as indicated in the code below.
@@ -216,6 +229,7 @@ private static void RegisterServices(IKernel kernel)
 >Note that the AzureBlobImageRepository class was added in another HOL. If you don't already have this then you can leave the LocalImageRepostiory class that is there.
 
 **Modify web.config**
+
 The configuration information for DocumentDB is located in the project's web.config file. You will need to add the DocumentDB account endpoint and authorization key. You can obtain both from the Azure Preview Portal by clicking on the Keys tile on the Document DB Account blade.
 
 Add the following configuation to the *web.config* file in the appSettings section.
@@ -229,6 +243,7 @@ Add the following configuation to the *web.config* file in the appSettings secti
 ```
 
 **DocumentDBBootstrapper**
+
 You now need to set up the DocumentDB database and document collection. A separate project, DocumentDBBootstrapper, has been provide at *HOL/Azure DocumentDB/DocumentDBBootstrapper* that will ensure the database and collection are properly configured. 
 
 
@@ -240,6 +255,7 @@ You now need to set up the DocumentDB database and document collection. A separa
 5. In the Azure Preview Portal, select your DocumentDB account and then the **Document Explorer** part. You should now be able to see your database and collection created, as well as populated with test data.
 
 **Test The Site**
+
 We should now push our changes to our deployed website and test.
 
 1. Run the MyJunkYourStuff website locally. The site should now connect to DocumentDB for all data (except images - which will use Azure Blob storage).
