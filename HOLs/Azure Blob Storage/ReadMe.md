@@ -183,12 +183,12 @@ Now that we have a storage account we can now add in the code to the website to 
 	```
 	This class is used to write uploaded files for new locations to Blob Storage, and delete a file related to a location if the location is deleted.  Note that the credentials for the account are stored in the application settings so we need to add that information.
 5. Open **web.config** and locate the appSettings element.  Add the following keys:
-	```xml
+```xml
 	<!-- ImageRepository -->
     <add key="Blob.storageAccountKey" value="{YourStorageKey}" />
     <add key="Blob.storageAccountName" value="{YourStorageAccountName}" />
     <add key="Blob.containerName" value="locationimages" />
-	```
+```
 	Replace the {YourStorageAccountName} with the name of the storage account you created above (including the curly braces being removed).  Do the same with replacing {YourStorageKey} with the access key you retrievied from the previous step of creating a storage account.
 6. Open the **NinjectWebCommon.cs** file under the App_Start folder.
 7. In the **RegisterServices** method comment out or remove the following line:
