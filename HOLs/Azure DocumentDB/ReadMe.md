@@ -223,7 +223,6 @@ private static void RegisterServices(IKernel kernel)
     //This is just for the in-memory sample only, before we insert persistance, not for production use.
     kernel.Bind<IImageRepository>().To<AzureBlobImageRepository>();
 	kernel.Bind<ILocationRepository>().To<DocumentDBRepository>();
-);
 }  
 ```
 >Note that the AzureBlobImageRepository class was added in another HOL. If you don't already have this then you can leave the LocalImageRepostiory class that is there.
