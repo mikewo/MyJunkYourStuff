@@ -33,7 +33,7 @@ Microsoft Azure has cross-platform\language SDKs and command line tools; however
 
 **Visual Studio 2013 Pro with Update 4 (or higher)** 
  - Download 90-day free trial from http://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx 
-- Alternative: Visual Studio Community 2014 with Update 4 (http://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx
+- Alternative: Visual Studio Community 2014 with Update 4 (http://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
 
 **Azure Subscription**:
 - Free Month Trial: sign up via http://azure.microsoft.com/en-us/pricing/free-trial/
