@@ -18,7 +18,7 @@
         </p>
         @foreach (var item in Model)
         {
-            @String.Format("{0:MM/dd/yy}", item.StartTime) 
+            @String.Format("{0:MM/dd/yy}", item.StartTime.Date) 
             @Html.Raw("&nbsp;-&nbsp;")
             @Html.ActionLink(item.Title, "Details", "Locations", new { id = item.Id }, null) 
             <br />

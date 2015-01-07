@@ -64,9 +64,11 @@ namespace MyJunkYourStuff.App_Start
         {
             //Create the in-memory version of the repository, only one for the lifetime of the application.
             //This is just for the in-memory sample only, before we insert persistance, not for production use.
-            kernel.Bind<IImageRepository>().To<LocalImageRepository>();
-            kernel.Bind<ILocationRepository>().To<LocationInMemoryRepository>().InSingletonScope();
+            //kernel.Bind<IImageRepository>().To<LocalImageRepository>();
+            //kernel.Bind<ILocationRepository>().To<LocationInMemoryRepository>().InSingletonScope();
 
+            kernel.Bind<IImageRepository>().To<AzureBlobImageRepository>();
+            kernel.Bind<ILocationRepository>().To<DocumentDBRepository>();
         }        
     }
 }

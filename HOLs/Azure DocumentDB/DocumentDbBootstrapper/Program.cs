@@ -120,8 +120,8 @@ namespace DocumentDbBootstrapper
 
             IEnumerable<Location> locations = new[]
             {
-                new Location { Id=Guid.NewGuid(), Title="Furniture", Description="We have furniture of all types and shapes.", Address="123 AnyStreet, Bardstown, KY", JunkerName="Bob", StartTime = new DateEpoch {Date = new DateTime(2015, 1, 9, 8, 0, 0)}},
-                new Location { Id=Guid.NewGuid(), Title="Board Games!", Description="Selling an array of different board games.", Address="2354 Jefferson Street, Chicago, IL", JunkerName="Dave", StartTime = new DateEpoch {Date = new DateTime(2015, 1, 10, 10, 0, 0)}},
+                new Location { Id=Guid.NewGuid(), Title="Furniture", Description="We have furniture of all types and shapes.", Address="123 AnyStreet, Bardstown, KY", JunkerName="Bob", StartTime = new DateEpoch {Date = new DateTime(2015, 1, 3, 8, 0, 0)}},
+                new Location { Id=Guid.NewGuid(), Title="Board Games!", Description="Selling an array of different board games.", Address="2354 Jefferson Street, Chicago, IL", JunkerName="Dave", StartTime = new DateEpoch {Date = new DateTime(2015, 1, 5, 10, 0, 0)}},
                 new Location { Id=Guid.NewGuid(), Title="Legos", Description="Yes, we know it's inconcievable to want to part with Legos, but they must go!", Address="95434 Ryan Circle, Sandusky, OH", JunkerName="William", StartTime =new DateEpoch{ Date = new DateTime(2015, 1, 14, 9, 0, 0)}},
                 new Location { Id=Guid.NewGuid(), Title="Garage Sale", Description="The entire garage and everything in it. Bring a BIG truck.", Address="293 Striker Park, LaCenter, KY", JunkerName="Steven", StartTime = new DateEpoch {Date = new DateTime(2015, 2, 1, 9, 0, 0)}},
                 new Location { Id=Guid.NewGuid(), Title="Office Closeout", Description="Selling computers, monitors, printers, office furniture and even the cube walls (slightly burnt).", Address="232 Initech Way, Los Angeles, CA", JunkerName="Bob", StartTime = new DateEpoch {Date = new DateTime(2015, 1, 27, 11, 0, 0)}},
