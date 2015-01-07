@@ -38,6 +38,7 @@ In order to complete this lab you will need the following:
 6. Click the **Create** button when finished. Wait for the VM to finish provisioning. Provisioning a VM will take several minutes.
 
 **Add Data Disks**
+
 In this section you will add two new data disks to the VM. The disks will be unformatted and will need to be formatted prior to use. A custom script extension will be used to format the disks. Alternatively, you may use Remote Desktop to access the VM and format the disks manually.
 
 After the VM has been successfully provisioned, execute the following steps:
@@ -48,6 +49,7 @@ After the VM has been successfully provisioned, execute the following steps:
 4. Click **OK** to add the new data disk to the VM.
 
 **Add Endpoints**
+
 In this section you will add two new endpoints to the VM: HTTP and HTTPS.
 
 After the VM has been successfully provisioned, execute the following steps:
@@ -59,6 +61,7 @@ After the VM has been successfully provisioned, execute the following steps:
 You will need to wait until the endpoints are added before being able to proceed to make additional VM modifications (i.e. before adding the extensions).
 
 **Add the Extensions**
+
 In this section, two Azure VM extensions will be added: **PowerShell Desired State Configuration** and **Custom Script**. The PowerShell Desired State Configuration (DSC) extension will be used to configure specific Windows features applicable to a web server. The Custom Script extension will be used to format the previously added data disks. Note that the Custom Script extension executes a PowerShell (.ps) file that can perform a wide range of actions. Formatting disks is just example.
 
 After the VM has been successfully provisioned, execute the following steps:
@@ -67,12 +70,14 @@ After the VM has been successfully provisioned, execute the following steps:
 2. On the **Extensions** blade, select **Add** from the top of the blade, and then select the appropriate extension to add to the VM.
 
 *Custom Script*
+
 1. Select the **Custom Script** extension from the list of available extensions.
 2. Read the information about the extension and then select **Create**.
 3. On the **Add Extension** blade, browse to and select the *formatdisk.ps1* script file. There are no arguments to provide for this script.
 4. Click **Create**.
 
 *PowerShell Desired State Configuration*
+
 1. Select the **PowerShell Desired State Configuration** extension from the list of available extensions.
 2. Read the information about the extension and then select **Create**.
 3. Open the Azure PowerShell console and execute the following command to create a configuration module (.zip file). Be sure to change the path to be relative to your machine. ```Publish-AzureVMDscConfiguration -ConfigurationPath "C:\CodeMash2015\Demos\VirtualMachine_DSC\ConfigureWebServer.ps1" `
@@ -86,6 +91,7 @@ After the VM has been successfully provisioned, execute the following steps:
 
 
 **Validatation**
+
 You can use Remote Desktop to log into the new Azure VM. Verify the following:
 
 
