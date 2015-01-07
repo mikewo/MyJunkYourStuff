@@ -23,7 +23,7 @@ The examples here should **NOT** be blindly used for production purposes. As wit
 
 Microsoft Azure has cross-platform\language SDKs and command line tools; however, this workshop focuses on using .NET for the examples. To prepare you machine for the workshop you'll want to have the following installed: 
 
-**Azure PowerShell cmdlets **
+**Azure PowerShell cmdlets**
  - Version used in workshop was 0.8.12.
  - Use either Web Platform Installer or Windows Standalone
 - https://github.com/Azure/azure-powershell/releases   
